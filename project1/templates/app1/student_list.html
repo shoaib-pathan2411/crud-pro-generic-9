@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+{% block title %}
+<title> SHOW DATA </title>
+{% endblock %}
+
+{% block content %}
+<div class="table-responsive-xl">
+<table class="table table-dark">
+    <thead>
+            <tr>
+                <th> ROLL NUMBER </th>
+                  <th> NAME </th>
+                  <th> MARKS </th>
+                  <th> ADDRESS </th>
+                  <th> AGE </th>
+                  <th> PHONE </th>
+                  <th> EMAIL </th>
+                  <th> BIRTH DATE</th>
+                  <th> PASSWORD</th>
+                  <th> C_PASSWORD</th>
+                  <th> ACTION </th>
+            </tr>
+    </thead>
+    <tbody>
+
+        {% for object in object_list %}
+        <tr>
+            <td>{{object.roll}}</td>
+             <td>{{object.name}}</td>
+             <td>{{object.marks}}</td>
+             <td>{{object.address}}</td>
+            <td>{{object.age}}</td>
+             <td>{{object.phone}}</td>
+             <td>{{object.email}}</td>
+            <td>{{object.birth_date}}</td>
+            <td> {{object.password}}</td>
+            <td> {{object.c_password}}</td>
+             <td>
+                 <button type="button" class="btn btn-warning btn-sm"><a href="{% url 'update_url' object.roll %}">UPDATE</a></button>
+                 <button  type="button" class="btn btn-danger btn-sm"><a href="{% url 'delete_url' object.roll %}">DELETE</a></button>
+             </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+
+</table>
+</div>
+{% endblock %}
